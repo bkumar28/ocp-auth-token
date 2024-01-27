@@ -24,7 +24,7 @@
 ```
 #### Run python script to get Openshift API Access Token
  ```
-  $ python3 ocp_auth.py
+  $ python3 openshift_auth.py
  ```
 
 #### Reference
