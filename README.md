@@ -1,31 +1,34 @@
 # OpenShift API Access Token
 
-#### Install dependencies
+### Install dependencies
  ```
   $ pip3 install requests
  ```
-#### Update Initial Kwargs
-```
-  PROTOCOL = https or http
-  DOMAINNAME = openshift.example.com # OpenShift domain name
-  PORT = 6443 # API access port
-  ocp_username = "admin" #your openshift username
-  ocp_password = "admin@123" #your openshift password
-  verify_ssl = False #Is enabled OpenShift SSL layer, True or False
-  host = "https://api.openshift.example.com:6443" # f"{PROTOCOL}://api.{DOMAINNAME}:{PORT}"
+###  Edit the `openshift_auth.py` file:
+```python
+PROTOCOL = "https"                    # or "http"
+DOMAINNAME = "openshift.example.com" # your OpenShift domain
+PORT = 6443                          # default API port
+ocp_username = "admin"
+ocp_password = "admin@123"
+verify_ssl = False                   # set True if SSL cert trusted
 
-  initial_kwargs = {
-          "ocp_username": ocp_username,
-          "ocp_password": ocp_password,
-           "verify_ssl": verify_ssl,
-          "host": host,
-      }
+host = f"{PROTOCOL}://api.{DOMAINNAME}:{PORT}"
 
+initial_kwargs = {
+    "ocp_username": ocp_username,
+    "ocp_password": ocp_password,
+    "verify_ssl": verify_ssl,
+    "host": host,
+}
 ```
-#### Run python script to get Openshift API Access Token
+### Usage
+Run the script to get your API access token:
+
  ```
   $ python3 openshift_auth.py
  ```
 
-#### Reference
-   - https://github.com/openshift/openshift-restclient-python
+### Reference
+ - Uses requests library for HTTP interactions
+ - Inspired by (openshift-restclient-python)[https://github.com/openshift/openshift-restclient-python]
